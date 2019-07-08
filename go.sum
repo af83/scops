@@ -1,0 +1,11 @@
+github.com/af83/ara-external-models v0.0.2 h1:quyeI7+rlaDb34adnTf9O40k9GWnzW8WuoMW4KVBOac=
+github.com/af83/ara-external-models v0.0.2/go.mod h1:mX4oZEApZwpnFkDqZcdledk3wfeskP2czsCzeUrye2M=
+github.com/gocraft/dbr v0.0.0-20190626032649-cb950044475e h1:XUhcAoij+6iWm1Ug5ATcZLNzGNiqRT0nwTE348u5ZIs=
+github.com/gocraft/dbr v0.0.0-20190626032649-cb950044475e/go.mod h1:K/9g3pPouf13kP5K7pdriQEJAy272R9yXuWuDIEWJTM=
+github.com/golang/protobuf v1.3.1 h1:YF8+flBXS5eO826T4nzqPrxfhQThhXl0YzfuUPu4SBg=
+github.com/golang/protobuf v1.3.1/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
+github.com/jonboulle/clockwork v0.1.0 h1:VKV+ZcuP6l3yW9doeqz6ziZGgcynBVQO+obU0+0hcPo=
+github.com/jonboulle/clockwork v0.1.0/go.mod h1:Ii8DK3G1RaLaWxj9trq07+26W01tbo22gdxWY5EU2bo=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v2 v2.2.2 h1:ZCJp+EgiOT7lHqUV2J862kp8Qj64Jo6az82+3Td9dZw=
+gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
