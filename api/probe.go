@@ -16,7 +16,7 @@ import (
 
 type Feeder interface {
 	DbConnect() *dbr.Session
-	GetCompleteModel(sess *dbr.Session) *external_models.ExternalCompleteModel
+	GetCompleteModel(sess *dbr.Session) (*external_models.ExternalCompleteModel, error)
 }
 
 type Probe struct {
@@ -51,8 +51,12 @@ func (p Probe) Run() {
 
 func (p Probe) getAndSendModel(s *dbr.Session) {
 	t := time.Now()
-	model := p.feeder.GetCompleteModel(s)
+	model, err := p.feeder.GetCompleteModel(s)
 	logger.Log.Debugf("Plugin response time: %v", time.Since(t))
+	if err != nil {
+		logger.Log.Debugf("Error while fetching model: %v", err)
+		return
+	}
 
 	logger.Log.Debugf("StopAreas returned: %v", len(model.StopAreas))
 	logger.Log.Debugf("Lines returned: %v", len(model.Lines))
