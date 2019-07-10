@@ -1,5 +1,7 @@
 github.com/af83/ara-external-models v0.0.2 h1:quyeI7+rlaDb34adnTf9O40k9GWnzW8WuoMW4KVBOac=
 github.com/af83/ara-external-models v0.0.2/go.mod h1:mX4oZEApZwpnFkDqZcdledk3wfeskP2czsCzeUrye2M=
+github.com/af83/ara-external-models v0.0.3 h1:PfjYQhMzbhkX1alHgj4225Bx/TF3tQsFP6hhiU2HxEg=
+github.com/af83/ara-external-models v0.0.3/go.mod h1:mX4oZEApZwpnFkDqZcdledk3wfeskP2czsCzeUrye2M=
 github.com/gocraft/dbr v0.0.0-20190626032649-cb950044475e h1:XUhcAoij+6iWm1Ug5ATcZLNzGNiqRT0nwTE348u5ZIs=
 github.com/gocraft/dbr v0.0.0-20190626032649-cb950044475e/go.mod h1:K/9g3pPouf13kP5K7pdriQEJAy272R9yXuWuDIEWJTM=
 github.com/golang/protobuf v1.3.1 h1:YF8+flBXS5eO826T4nzqPrxfhQThhXl0YzfuUPu4SBg=
