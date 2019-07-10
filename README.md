@@ -4,9 +4,20 @@ Regularly reads a database and then send [Ara External Model](https://github.com
 
 ## Run
 
-To run, this app needs a plugin with a Feeder interface.
+To run, this app needs a plugin.
 
 ```make run PLUGIN=example```
+
+### Plugin
+
+The plugin must have a `Feeder` object that respond to this interface:
+
+```
+type Feeder interface {
+	DbConnect() *dbr.Session
+	GetCompleteModel(sess *dbr.Session) (*external_models.ExternalCompleteModel, error)
+}
+```
 
 ### Options
 
