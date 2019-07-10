@@ -72,7 +72,7 @@ func (p Probe) getAndSendModel(s *dbr.Session) {
 		logger.Log.Debugf("Error while creating request: %v", err)
 		return
 	}
-	httpRequest.Header.Set("Authorization", fmt.Sprintf("Token token=", config.Config.AuthToken))
+	httpRequest.Header.Set("Authorization", fmt.Sprintf("Token token=%v", config.Config.AuthToken))
 	httpRequest.Header.Set("Content-Type", "application/x-protobuf")
 	httpRequest.Header.Set("Accept", "application/x-protobuf")
 	httpRequest.ContentLength = int64(buffer.Len())
