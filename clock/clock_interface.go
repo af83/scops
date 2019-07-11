@@ -6,20 +6,6 @@ import (
 	"github.com/jonboulle/clockwork"
 )
 
-type Clock interface {
-	After(d time.Duration) <-chan time.Time
-	Sleep(d time.Duration)
-	Now() time.Time
-	Since(t time.Time) time.Duration
-}
-
-type FakeClock interface {
-	Clock
-
-	Advance(d time.Duration)
-	BlockUntil(n int)
-}
-
 var defaultClock = clockwork.NewRealClock()
 
 func DefaultClock() clockwork.Clock {

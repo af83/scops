@@ -35,17 +35,12 @@ func (p Probe) Run() {
 	session := p.feeder.DbConnect()
 	logger.Log.Printf("Connection successful")
 
-	tick := p.Clock().After(config.Config.Cycle)
+	ticker := p.Clock().NewTicker(config.Config.Cycle)
 
-	for {
-		select {
-		case <-tick:
-			logger.Log.Debugf("Get and send model")
+	for range ticker.Chan() {
+		logger.Log.Debugf("Get and send model")
 
-			p.getAndSendModel(session)
-
-			tick = p.Clock().After(config.Config.Cycle)
-		}
+		p.getAndSendModel(session)
 	}
 }
 
