@@ -23,15 +23,15 @@ type Feeder interface {
 
 All options can be either specified with an environment variable (SCOPS_VARIABLE=value) or via command line (-variable value).
 
-**Debug**: Boolean, enable debug messages
+**debug**: Boolean, enable debug messages
 
-**Syslog**: Boolean, redirect messages to syslog
+**syslog**: Boolean, redirect messages to syslog
 
-**RemoteUrl**: Remote URL to send messages to
+**remote**: Remote URL to send messages to
 
-**AuthToken**: Authorization token (Authorization: Token token=secret in the request header)
+**token**: Authorization token (Authorization: Token token=secret in the request header)
 
-**Plugin**: Path to the plugin to use to get the data
+**plugin**: Path to the plugin to use to get the data
 
-**Cycle**: Cycle duration (accepts a value acceptable to time.ParseDuration)
+**cycle**: Cycle duration (accepts a value acceptable to time.ParseDuration, ex: '60s')
 
