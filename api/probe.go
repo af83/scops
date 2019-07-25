@@ -22,6 +22,7 @@ type Feeder interface {
 type Probe struct {
 	clock.ClockConsumer
 
+	client *http.Client
 	feeder Feeder
 }
 
@@ -34,6 +35,8 @@ func (p Probe) Run() {
 	logger.Log.Printf("Connecting to the database")
 	session := p.feeder.DbConnect()
 	logger.Log.Printf("Connection successful")
+
+	p.client = &http.Client{Timeout: 20 * time.Second}
 
 	ticker := p.Clock().NewTicker(config.Config.Cycle)
 
@@ -79,9 +82,8 @@ func (p Probe) getAndSendModel(s *dbr.Session) {
 	logger.Log.Debugf("Protobuf body size: %v bytes", buffer.Len())
 
 	// Send http request
-	httpClient := &http.Client{Timeout: 20 * time.Second}
 	t = time.Now()
-	response, err := httpClient.Do(httpRequest)
+	response, err := p.client.Do(httpRequest)
 	logger.Log.Debugf("Ara response time: %v", time.Since(t))
 	if err != nil {
 		logger.Log.Debugf("Error while sending request: %v", err)
