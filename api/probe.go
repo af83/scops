@@ -79,7 +79,7 @@ func (p Probe) getAndSendModel(s *dbr.Session) {
 	logger.Log.Debugf("Protobuf body size: %v bytes", buffer.Len())
 
 	// Send http request
-	httpClient := &http.Client{Timeout: 5 * time.Second}
+	httpClient := &http.Client{Timeout: 20 * time.Second}
 	t = time.Now()
 	response, err := httpClient.Do(httpRequest)
 	logger.Log.Debugf("Ara response time: %v", time.Since(t))
