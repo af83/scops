@@ -12,6 +12,7 @@ import (
 var Config = struct {
 	Debug  bool
 	Syslog bool
+	Gzip   bool
 
 	RemoteUrl string
 	AuthToken string
@@ -33,6 +34,7 @@ func LoadConfig() {
 func loadEnvConfig() {
 	Config.Debug = os.Getenv("SCOPS_DEBUG") == "TRUE"
 	Config.Syslog = os.Getenv("SCOPS_SYSLOG") == "TRUE"
+	Config.Gzip = os.Getenv("SCOPS_GZIP") == "TRUE"
 	Config.RemoteUrl = checkEnv("SCOPS_REMOTE", "localhost/test/push")
 	Config.AuthToken = checkEnv("SCOPS_TOKEN", "testToken")
 	Config.Plugin = checkEnv("SCOPS_PLUGIN", "")
@@ -49,6 +51,7 @@ func loadFlagConfig() {
 	clockPtr := flag.String("testclock", "", "Use a fake clock at time given. Format 20060102-1504")
 	debugPtr := flag.Bool("debug", false, "Enable debug messages")
 	sysPtr := flag.Bool("syslog", false, "Redirect messages to syslog")
+	gzipPtr := flag.Bool("gzip", false, "Gzip requests")
 	remotePtr := flag.String("remote", "", "Remote URL to send messages to")
 	authPtr := flag.String("token", "", "Authorization token")
 	pluginPtr := flag.String("plugin", "", "Plugin to use to get the data")
@@ -78,6 +81,9 @@ func loadFlagConfig() {
 	}
 	if flagset["syslog"] {
 		Config.Syslog = *sysPtr
+	}
+	if flagset["gzip"] {
+		Config.Gzip = *gzipPtr
 	}
 	if flagset["remote"] {
 		Config.RemoteUrl = *remotePtr

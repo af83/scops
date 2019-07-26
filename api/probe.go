@@ -2,6 +2,7 @@ package api
 
 import (
 	"bytes"
+	"compress/gzip"
 	"fmt"
 	"net/http"
 	"time"
@@ -68,8 +69,22 @@ func (p Probe) getAndSendModel(s *dbr.Session) {
 	}
 
 	// Create http request
-	buffer := bytes.NewBuffer(data)
-	httpRequest, err := http.NewRequest("POST", config.Config.RemoteUrl, buffer)
+	var buffer bytes.Buffer
+	if config.Config.Gzip {
+		g := gzip.NewWriter(&buffer)
+		if _, err = g.Write(data); err != nil {
+			logger.Log.Debugf("Can't gzip model: %v", err)
+			return
+		}
+		if err = g.Close(); err != nil {
+			logger.Log.Debugf("Can't close gzip writer: %v", err)
+			return
+		}
+	} else {
+		buffer.Write(data)
+	}
+
+	httpRequest, err := http.NewRequest("POST", config.Config.RemoteUrl, &buffer)
 	if err != nil {
 		logger.Log.Debugf("Error while creating request: %v", err)
 		return
@@ -77,6 +92,9 @@ func (p Probe) getAndSendModel(s *dbr.Session) {
 	httpRequest.Header.Set("Authorization", fmt.Sprintf("Token token=%v", config.Config.AuthToken))
 	httpRequest.Header.Set("Content-Type", "application/x-protobuf")
 	httpRequest.Header.Set("Accept", "application/x-protobuf")
+	if config.Config.Gzip {
+		httpRequest.Header.Set("Content-Encoding", "gzip")
+	}
 	httpRequest.ContentLength = int64(buffer.Len())
 
 	logger.Log.Debugf("Protobuf body size: %v bytes", buffer.Len())

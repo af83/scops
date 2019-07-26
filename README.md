@@ -27,6 +27,8 @@ All options can be either specified with an environment variable (SCOPS_VARIABLE
 
 **syslog**: Boolean, redirect messages to syslog
 
+**gzip**: Boolean, gzip requests
+
 **remote**: Remote URL to send messages to
 
 **token**: Authorization token (Authorization: Token token=secret in the request header)
