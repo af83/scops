@@ -12,6 +12,9 @@ RUN go install -v ./...
 
 FROM debian:latest
 
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y --no-install-recommends ca-certificates && \
+    apt-get clean && apt-get -y autoremove && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 COPY --from=builder /go/bin/scops ./
 RUN chmod +x ./scops
