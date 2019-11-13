@@ -2,6 +2,10 @@
 
 Regularly reads a database and then send [Ara External Model](https://github.com/af83/ara-external-models) structures with [Protocol Buffers](https://developers.google.com/protocol-buffers/)
 
+## :warning: Project reallocation
+
+Scops is now located here: https://bitbucket.org/enroute-mobi/scops
+
 ## Run
 
 To run, this app needs a plugin.
