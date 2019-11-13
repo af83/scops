@@ -6,6 +6,10 @@ Regularly reads a database and then send [Ara External Model](https://github.com
 
 To run, this app needs a plugin.
 
+```scops -plugin path/to/plugin.so```
+
+A make command exists to fetch a plugin from the enroute-mobi bitbucket repositories:
+
 ```make run PLUGIN=example```
 
 ### Plugin
@@ -18,6 +22,10 @@ type Feeder interface {
 	GetCompleteModel(sess *dbr.Session) (*external_models.ExternalCompleteModel, error)
 }
 ```
+
+### Dependency
+
+Scops and the plugings database access needs to use [the dbr library](https://github.com/gocraft/dbr).
 
 ### Options
 
